@@ -1,66 +1,108 @@
 using System;
-using System.Drawing;
-using MonoTouch.ObjCRuntime;
+
 using MonoTouch.Foundation;
+using MonoTouch.CoreLocation;
+using MonoTouch.CoreMotion;
 using MonoTouch.UIKit;
+using MonoTouch.ObjCRuntime;
 
-namespace Wikitude.iOS
-{
-    // The first step to creating a binding is to add your native library ("libNativeLibrary.a")
-    // to the project by right-clicking (or Control-clicking) the folder containing this source
-    // file and clicking "Add files..." and then simply select the native library (or libraries)
-    // that you want to bind.
-    //
-    // When you do that, you'll notice that MonoDevelop generates a code-behind file for each
-    // native library which will contain a [LinkWith] attribute. MonoDevelop auto-detects the
-    // architectures that the native library supports and fills in that information for you,
-    // however, it cannot auto-detect any Frameworks or other system libraries that the
-    // native library may depend on, so you'll need to fill in that information yourself.
-    //
-    // Once you've done that, you're ready to move on to binding the API...
-    //
-    //
-    // Here is where you'd define your API definition for the native Objective-C library.
-    //
-    // For example, to bind the following Objective-C class:
-    //
-    //     @interface Widget : NSObject {
-    //     }
-    //
-    // The C# binding would look like this:
-    //
-    //     [BaseType (typeof (NSObject))]
-    //     interface Widget {
-    //     }
-    //
-    // To bind Objective-C properties, such as:
-    //
-    //     @property (nonatomic, readwrite, assign) CGPoint center;
-    //
-    // You would add a property definition in the C# interface like so:
-    //
-    //     [Export ("center")]
-    //     PointF Center { get; set; }
-    //
-    // To bind an Objective-C method, such as:
-    //
-    //     -(void) doSomething:(NSObject *)object atIndex:(NSInteger)index;
-    //
-    // You would add a method definition to the C# interface like so:
-    //
-    //     [Export ("doSomething:atIndex:")]
-    //     void DoSomething (NSObject object, int index);
-    //
-    // Objective-C "constructors" such as:
-    //
-    //     -(id)initWithElmo:(ElmoMuppet *)elmo;
-    //
-    // Can be bound as:
-    //
-    //     [Export ("initWithElmo:")]
-    //     IntPtr Constructor (ElmoMuppet elmo);
-    //
-    // For more information, see http://docs.xamarin.com/ios/advanced_topics/binding_objective-c_libraries
-    //
+namespace Wikitude {
+
+    [Model, BaseType (typeof (NSObject))]
+    public partial interface WTArchitectViewDelegate {
+
+        [Export ("architectView:invokedURL:")]
+        void InvokedURL (WTArchitectView architectView, NSUrl url);
+
+        [Export ("architectView:didFailLoadWithError:")]
+        void DidFailLoadWithError (WTArchitectView architectView, NSError error);
+
+        [Export ("architectView:didCaptureScreenWithContext:")]
+        void DidCaptureScreenWithContext (WTArchitectView architectView, NSDictionary context);
+
+        [Export ("architectView:didFailCaptureScreenWithError:")]
+        void DidFailCaptureScreenWithError (WTArchitectView architectView, NSError error);
+    }
+
+    [BaseType (typeof (UIView))]
+    public partial interface WTArchitectView {
+
+        [Field ("kWTScreenshotBundleDirectoryKey", "__Internal")]
+        NSString WTScreenshotBundleDirectoryKey { get; }
+
+        [Field ("kWTScreenshotSaveModeKey", "__Internal")]
+        NSString WTScreenshotSaveModeKey { get; }
+
+        [Field ("kWTScreenshotCaptureModeKey", "__Internal")]
+        NSString WTScreenshotCaptureModeKey { get; }
+
+        [Field ("kWTScreenshotImageKey", "__Internal")]
+        NSString WTScreenshotImageKey { get; }
+
+        [Export ("delegate", ArgumentSemantic.Assign)]
+        WTArchitectViewDelegate Delegate { get; set; }
+
+        [Export ("isRunning")]
+        bool IsRunning { get; }
+
+        [Export ("desiredLocationAccuracy")]
+        Double DesiredLocationAccuracy { get; set; }
+
+        [Export ("desiredDistanceFilter")]
+        Double DesiredDistanceFilter { get; set; }
+
+        [Export ("shouldWebViewRotate")]
+        bool ShouldWebViewRotate { get; set; }
+
+        [Static, Export ("isDeviceSupportedForARMode:")]
+        bool IsDeviceSupportedForARMode (WTARMode supportedARMode);
+
+        [Export ("initializeWithKey:motionManager:")]
+        void InitializeWithKey (string key, CMMotionManager motionManager);
+
+        [Export ("loadArchitectWorldFromUrl:")]
+        void LoadArchitectWorldFromUrl (NSUrl architectWorldUrl);
+
+        [Export ("callJavaScript:")]
+        void CallJavaScript (string javaScript);
+
+        [Export ("injectLocationWithLatitude:longitude:altitude:accuracy:")]
+        void InjectLocationWithLatitude (Double latitude, Double longitude, Double altitude, Double accuracy);
+
+        [Export ("injectLocationWithLatitude:longitude:accuracy:")]
+        void InjectLocationWithLatitude (Double latitude, Double longitude, Double accuracy);
+
+        [Export ("useInjectedLocation")]
+        bool UseInjectedLocation { set; }
+
+        [Export ("isUsingInjectedLocation")]
+        bool IsUsingInjectedLocation { get; }
+
+        [Export ("cullingDistance")]
+        float CullingDistance { get; set; }
+
+        [Export ("versionNumber")]
+        string VersionNumber { get; }
+
+        [Export ("clearCache")]
+        void ClearCache ();
+
+        [Export ("setShouldRotate:toInterfaceOrientation:")]
+        void SetShouldRotate (bool shouldAutoRotate, UIInterfaceOrientation interfaceOrientation);
+
+        [Export ("isRotatingToInterfaceOrientation")]
+        bool IsRotatingToInterfaceOrientation { get; }
+
+        [Export ("stop")]
+        void Stop ();
+
+        [Export ("start")]
+        void Start ();
+
+        [Export ("motionManager")]
+        CMMotionManager MotionManager { get; }
+
+        [Export ("captureScreenWithMode:usingSaveMode:saveOptions:context:")]
+        void CaptureScreenWithMode (WTScreenshotCaptureMode captureMode, WTScreenshotSaveMode saveMode, WTScreenshotSaveOptions options, NSDictionary context);
+    }
 }
-

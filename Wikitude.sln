@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wikitude.iOS", "Wikitude.iOS\Wikitude.iOS.csproj", "{8F4E6F8D-4880-484D-8E9C-0C97F5E10A71}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F4E6F8D-4880-484D-8E9C-0C97F5E10A71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F4E6F8D-4880-484D-8E9C-0C97F5E10A71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F4E6F8D-4880-484D-8E9C-0C97F5E10A71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F4E6F8D-4880-484D-8E9C-0C97F5E10A71}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Wikitude.iOS\Wikitude.iOS.csproj
+	EndGlobalSection
+EndGlobal

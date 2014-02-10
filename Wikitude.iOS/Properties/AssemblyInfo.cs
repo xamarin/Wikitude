@@ -6,10 +6,10 @@ using System.Runtime.CompilerServices;
 using MonoTouch.ObjCRuntime;
 
 
-[assembly: AssemblyTitle ("Wikitude.iOS")]
-[assembly: AssemblyDescription ("")]
+[assembly: AssemblyTitle ("Wikitude")]
+[assembly: AssemblyDescription ("Wikitude SDK for Xamarin.iOS")]
 [assembly: AssemblyConfiguration ("")]
-[assembly: AssemblyCompany ("Xamarin")]
+[assembly: AssemblyCompany ("Wikitude")]
 [assembly: AssemblyProduct ("")]
 [assembly: AssemblyCopyright ("")]
 [assembly: AssemblyTrademark ("")]
@@ -23,6 +23,6 @@ using MonoTouch.ObjCRuntime;
 //[assembly: AssemblyDelaySign(false)]
 //[assembly: AssemblyKeyFile("")]
 
-[assembly: LinkWith ("WikitudeSDK.a", LinkTarget.ArmV7 | LinkTarget.ArmV7s | LinkTarget.Simulator, ForceLoad = true, LinkerFlags = "-ObjC -lz -lsqlite3", IsCxx = true, 
+[assembly: LinkWith ("WikitudeSDK.a", LinkTarget.ArmV7 | LinkTarget.ArmV7s | LinkTarget.Simulator, ForceLoad = true, LinkerFlags = "-ObjC -lstdc++ -dead_strip -lz -lsqlite3", IsCxx = true, 
     Frameworks = "Foundation UIKit Accounts Social AssetsLibrary CFNetwork CoreGraphics AVFoundation CoreLocation CoreMedia CoreMotion " +
     "CoreVideo MediaPlayer OpenGLES QuartzCore Security SystemConfiguration")]

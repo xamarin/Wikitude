@@ -4,10 +4,10 @@ using Android.App;
 
 // Information about this assembly is defined by the following attributes.
 // Change them to the values specific to your project.
-[assembly: AssemblyTitle ("Wikitude.Android")]
-[assembly: AssemblyDescription ("")]
+[assembly: AssemblyTitle ("Wikitude")]
+[assembly: AssemblyDescription ("Wikitude SDK for Xamarin.Android")]
 [assembly: AssemblyConfiguration ("")]
-[assembly: AssemblyCompany ("Xamarin")]
+[assembly: AssemblyCompany ("Wikitude")]
 [assembly: AssemblyProduct ("")]
 [assembly: AssemblyCopyright ("")]
 [assembly: AssemblyTrademark ("")]

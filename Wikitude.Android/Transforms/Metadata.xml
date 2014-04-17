@@ -1,9 +1,63 @@
 <metadata>
-    <!--
-  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
-  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
-  
-  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
-  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
-  -->
+    <!--- Normalize Namespaces -->
+    <attr path="/api/package[@name='com.wikitude.architect']" name="managedName">Wikitude.Architect</attr>
+
+    <!--- Remove private classes -->
+    <remove-node path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectInterface']"/>
+    <remove-node path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectWebView']"/>
+    <remove-node path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='a' and count(parameter)=0]"/>
+    <remove-node path="/api/package[@name='com.wikitude.architect']/class[@name='ServiceManager']"/>
+    <remove-node path="/api/package[@name='com.wikitude.architect']/class[@name='ImageResourceInterface']"/>
+    <remove-node path="/api/package[@name='com.wikitude.architect']/interface[@name='IArchitectCallbackListener']"/>
+    <remove-node path="/api/package[@name='com.wikitude.architect']/class[@name='VideoManager']"/>
+    <remove-node path="/api/package[@name='com.wikitude.architect']/class[@name='StyleOptionsFont']"/>
+    <remove-node path="/api/package[@name='org.jsoup.examples']"/>
+    <remove-node path="/api/package[@name='org.jsoup']"/>
+    <remove-node path="/api/package[@name='org.jsoup.parser']"/>
+    <remove-node path="/api/package[@name='org.jsoup.nodes']"/>
+    <remove-node path="/api/package[@name='org.jsoup.helper']"/>
+    <remove-node path="/api/package[@name='org.jsoup.safety']"/>
+    <remove-node path="/api/package[@name='org.jsoup.select']"/>
+    <remove-node path="/api/package[@name='com.wikitude.android']"/>
+    <remove-node path="/api/package[@name='com.wikitude.tools.activities']"/>
+    <remove-node path="/api/package[@name='com.wikitude.tools.image']"/>
+    <remove-node path="/api/package[@name='com.wikitude.tools.location']"/>
+    <remove-node path="/api/package[@name='com.wikitude.tools.services']"/>
+    <remove-node path="/api/package[@name='com.wikitude.tools.views']"/>
+    <remove-node path="/api/package[@name='com.wikitude.tools.listener']"/>
+
+    <!-- Name parameters -->
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView.ArchitectConfig']/method[@name='ArchitectView.ArchitectConfig' and count(parameter)=1][1]/parameter[position()=1]" name="name">key</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView.ArchitectConfig']/method[@name='setKey' and count(parameter)=1][1]/parameter[position()=1]" name="name">key</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView.ArchitectConfig']/method[@name='setOrigin' and count(parameter)=1][1]/parameter[position()=1]" name="name">origin</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView.ArchitectUrlListener']/method[@name='urlWasInvoked' and count(parameter)=1][1]/parameter[position()=1]" name="name">url</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView.CaptureScreenCallback']/method[@name='onScreenCaptured' and count(parameter)=1][1]/parameter[position()=1]" name="name">bitmap</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView.SensorAccuracyChangeListener']/method[@name='onCompassAccuracyChanged' and count(parameter)=1][1]/parameter[position()=1]" name="name">accuracy</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='ArchitectView' and count(parameter)=1][1]/parameter[position()=1]" name="name">context</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='ArchitectView' and count(parameter)=2][1]/parameter[position()=1]" name="name">context</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='ArchitectView' and count(parameter)=2][1]/parameter[position()=2]" name="name">attrs</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='ArchitectView' and count(parameter)=3][1]/parameter[position()=1]" name="name">context</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='ArchitectView' and count(parameter)=3][1]/parameter[position()=2]" name="name">attrs</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='ArchitectView' and count(parameter)=3][1]/parameter[position()=3]" name="name">defStyle</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='callJavascript' and count(parameter)=1][1]/parameter[position()=1]" name="name">jsCmd</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='captureScreen' and count(parameter)=2][1]/parameter[position()=1]" name="name">captureMode</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='captureScreen' and count(parameter)=2][1]/parameter[position()=2]" name="name">callback</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='captureScreen' and count(parameter)=2][2]/parameter[position()=1]" name="name">captureMode</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='captureScreen' and count(parameter)=2][2]/parameter[position()=2]" name="name">fOut</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='getCacheDirectoryAbsoluteFilePath' and count(parameter)=1][1]/parameter[position()=1]" name="name">context</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='isDeviceSupported' and count(parameter)=1][1]/parameter[position()=1]" name="name">context</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='load' and count(parameter)=1][1]/parameter[position()=1]" name="name">urlString</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='onCreate' and count(parameter)=1][1]/parameter[position()=1]" name="name">config</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='onCreate' and count(parameter)=1][2]/parameter[position()=1]" name="name">key</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='registerSensorAccuracyChangeListener' and count(parameter)=1][1]/parameter[position()=1]" name="name">sensorAccuracyChangeListener</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='registerUrlListener' and count(parameter)=1][1]/parameter[position()=1]" name="name">listener</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='setCullingDistance' and count(parameter)=1][1]/parameter[position()=1]" name="name">distance</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='setLocation' and count(parameter)=4][1]/parameter[position()=1]" name="name">lat</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='setLocation' and count(parameter)=4][1]/parameter[position()=2]" name="name">lon</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='setLocation' and count(parameter)=4][1]/parameter[position()=3]" name="name">alt</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='setLocation' and count(parameter)=4][1]/parameter[position()=4]" name="name">accuracy</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='setLocation' and count(parameter)=3][1]/parameter[position()=1]" name="name">lat</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='setLocation' and count(parameter)=3][1]/parameter[position()=2]" name="name">lon</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='setLocation' and count(parameter)=3][1]/parameter[position()=3]" name="name">accuracy</attr>
+    <attr path="/api/package[@name='com.wikitude.architect']/class[@name='ArchitectView']/method[@name='unregisterSensorAccuracyChangeListener' and count(parameter)=1][1]/parameter[position()=1]" name="name">sensorAccuracyChangeListener</attr>
 </metadata>
